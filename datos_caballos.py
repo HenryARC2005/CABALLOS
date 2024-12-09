@@ -23,12 +23,12 @@ def cuota_saltos_velocidad():
     velocidad = randint(30, 71)
 
     if velocidad <= 40:
-        cuota, saltos = round(uniform(6, 10), 2), range(1, 3)
+        cuota, saltos = round(uniform(6, 7), 2), range(2, 3)
     elif velocidad <= 55:
-        cuota, saltos = round(uniform(3, 5), 2), range(1, 4)
-    elif velocidad <= 65:
+        cuota, saltos = round(uniform(4, 5), 2), range(1, 4)
+    elif velocidad <= 66:
         cuota, saltos = round(uniform(2, 3), 2), range(1, 5)
     else:
-        cuota, saltos = round(uniform(1, 1.50), 2), range(1, 6)
+        cuota, saltos = round(uniform(1, 1.90), 2), range(1, 6)
 
     return cuota, saltos, velocidad

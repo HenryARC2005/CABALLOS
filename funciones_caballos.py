@@ -1,6 +1,6 @@
 import clases_juego as cj
 import datos_caballos as dc
-from os import  system
+from os import system
 
 
 def mostrar_menu():
@@ -17,10 +17,16 @@ def mostrar_menu():
 def mostrar_caballos(caballos):
     print()
     system('cls')
-    for k, v in caballos.items():
-        print(f'({v.etiqueta}) {v} --> {v.cuotas_saltos_velocidad[0]}')
+    for c in caballos.values():
+        print(f'({c.etiqueta}) {c} --> {c.cuotas_saltos_velocidad[0]}')
 
 
 def generar_caballos(cantidad):
-    return {f'{i+1}': cj.Caballo(dc.nombre_genero(), dc.peso(), dc.edad(), dc.altura(), dc.cuota_saltos_velocidad(), i+1)
+    return {str(i+1): cj.Caballo(dc.nombre_genero(), dc.peso(), dc.edad(), dc.altura(), dc.cuota_saltos_velocidad(), i+1)
             for i in range(cantidad)}
+
+
+def desarrollar_carrera(caballos, ha_terminado=False):
+    for c in caballos.values():
+        print(f'CABALLO #{c.etiqueta}  ' + ' '.join('_' if i != c.posicion else '*' for i in range(30)) + '\n')
+        c.correr() if not ha_terminado else None

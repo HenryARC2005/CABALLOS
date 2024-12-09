@@ -35,9 +35,10 @@ while not salir:
 
                 fc.mostrar_caballos(caballos)
                 caballo = input('\nNúmero del caballo sobre el que desea apostar ==> ')
-                monto = float(input('Cantidad a apostar: $'))
+                monto = input('Cantidad a apostar: $')
+                monto = 0 if not monto.isnumeric() else float(monto)
 
-                if any((monto > user.saldo, user.saldo <= 0, caballo not in caballos.keys())):
+                if any((monto > user.saldo, user.saldo <= 0, caballo not in caballos.keys(), monto == 0)):
                     print('\nERROR... Datos de apuesta inválidos.\n')
                     system('pause')
                 else:
@@ -67,23 +68,19 @@ while not salir:
     # Comenzando la carrera (Modalidad de 2 Caballos)
         while all([v.posicion < 29 for v in caballos.values()]):
             system('cls')
-            for c in caballos.values():
-                print(f'CABALLO #{c.etiqueta}  ' + ' '.join('_' if i != c.posicion else '*' for i in range(30)) + '\n')
-                c.correr()
+            fc.desarrollar_carrera(caballos)
             sleep(1)
         system('cls')
-        for c in caballos.values():
-            print(f'CABALLO #{c.etiqueta}  ' + ' '.join('_' if i != c.posicion else '*' for i in range(30)) + '\n')
+        fc.desarrollar_carrera(caballos, True)
         sleep(1)
 
         if max((c for c in caballos), key=lambda x: caballos[x].posicion) == caballo:
             user.saldo += apuesta * caballos[caballo].cuotas_saltos_velocidad[0]
-            print(f'FELICIDADES, GANASTE LA APUESTA\n\n* SALDO DISPONIBLE: {user.saldo:.2f}')
+            print(f'FELICIDADES, GANASTE LA APUESTA\n\n* SALDO DISPONIBLE: {user.saldo:.2f}\n')
             system('pause')
         else:
-            print('\nHAS PERDIDO!!\n')
+            print('HAS PERDIDO!!\n')
             system('pause')
-
 
 
     elif opcion == 'C':

@@ -44,9 +44,3 @@ class Caballo:
               f'* Altura: {self.altura} mts\n'
               f'* Velocidad: {self.cuotas_saltos_velocidad[2]} Km/h\n'
               f'* Cuota: {self.cuotas_saltos_velocidad[0]}\n')
-
-
-# Creando un objeto Caballo
-# cab1 = Caballo(dc.nombre_genero(), dc.peso(), dc.edad(), dc.altura(), dc.cuota_saltos_velocidad(), 1)
-# cab1.obtener_datos()
-# print(cab1)

@@ -9,9 +9,10 @@ def mostrar_menu():
     print('''
     *** SELECCIONA LA MODALIDAD ***
 
-    A... 2 Caballos.
-    B... 4 Caballos.
-    C... Salir al MENÚ PRINCIPAL. 
+    A ... 2 Caballos.
+    B ... 4 Caballos.
+    C ... 8 Caballos.
+    D ... Salir al MENÚ PRINCIPAL. 
     ''')
 
 

@@ -16,6 +16,9 @@ while not salir:
         fc.carrera(cantidad_caballos=4)
 
     elif opcion == 'C':
+        fc.carrera(cantidad_caballos=8)
+
+    elif opcion == 'D':
         system('cls')
         print('\nVolviendo...\n')
         system('pause')

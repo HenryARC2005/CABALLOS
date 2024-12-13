@@ -1,6 +1,5 @@
 from random import choice, uniform, randint
 
-# FUNCIONES PARA EXTRAER LOS DATOS DE CADA CABALLO DE LA CARRERA
 def nombre_genero():
     with open('NOMBRES_gen.txt', encoding='UTF8') as archivo:
         nombre_y_gen = choice(archivo.readlines()).rstrip()
@@ -23,9 +22,9 @@ def cuota_saltos_velocidad():
     velocidad = randint(30, 71)
 
     if velocidad <= 40:
-        cuota, saltos = round(uniform(6, 7), 2), range(2, 3)
+        cuota, saltos = round(uniform(6, 7), 2), range(2, 4)
     elif velocidad <= 55:
-        cuota, saltos = round(uniform(4, 5), 2), range(1, 4)
+        cuota, saltos = round(uniform(4, 5), 2), range(1, 5)
     elif velocidad <= 66:
         cuota, saltos = round(uniform(2, 3), 2), range(1, 5)
     else:

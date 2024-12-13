@@ -30,8 +30,8 @@ class Caballo:
 
     def correr(self):
         suma = self.posicion + dc.choice(self.cuotas_saltos_velocidad[1])
-        if suma > 29:
-            self.posicion = 29
+        if suma > 49:
+            self.posicion = 49
         else:
             self.posicion = suma
 

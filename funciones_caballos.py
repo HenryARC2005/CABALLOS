@@ -1,5 +1,5 @@
-import clases_juego as cj
 import datos_caballos as dc
+from clases_juego import Caballo
 from os import system
 from time import sleep
 
@@ -24,8 +24,7 @@ def mostrar_caballos(caballos):
 
 
 def generar_caballos(cantidad):
-    return {str(i + 1): cj.Caballo(dc.nombre_genero(), dc.peso(), dc.edad(), dc.altura(), dc.cuota_saltos_velocidad(),
-                                   i + 1)
+    return {str(i + 1): Caballo(dc.nombre_genero(), dc.peso(), dc.edad(), dc.altura(), dc.cuota_saltos_velocidad(), i + 1)
             for i in range(cantidad)}
 
 

@@ -1,5 +1,4 @@
 import datos_caballos as dc
-# from os import system
 
 
 class Usuario:

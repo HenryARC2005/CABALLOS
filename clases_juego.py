@@ -1,8 +1,6 @@
 import datos_caballos as dc
 from config import *
-#
 
-#
 
 class Usuario:
     def __init__(self, saldo):
@@ -28,24 +26,41 @@ class Caballo:
         self.cuotas_saltos_velocidad = cuotas_saltos_velocidad
         self.etiqueta = etiqueta
         self.posicion_y = posicion_y
-        
+
+        self.spritesheet = caballo_sprite
+        self.frames = self.cargar_frames(34, 34, 6)
+        self.frame_actual = 0
+        self.contador_animacion = 0
 
     def __str__(self):
         return f'CABALLO #{self.etiqueta}'
 
+    def cargar_frames(self, ancho, alto, cantidad):
+
+        frames = []
+        for i in range(cantidad):
+            frame = self.spritesheet.subsurface(pygame.Rect(i * ancho, 0, ancho, alto))
+            frames.append(pygame.transform.scale(frame, (68, 68)))
+        return frames
+
     def dibujar(self):
-        screen.blit(caballo_sprite, (self.posicion, self.posicion_y))
+
+        screen.blit(self.frames[self.frame_actual], (self.posicion, self.posicion_y))
 
     def correr(self):
+
         suma = self.posicion + dc.choice(self.cuotas_saltos_velocidad[1])
-        if suma > META:
-            self.posicion = META
-        else:
-            self.posicion = suma
+        self.posicion = min(suma, META)
+
+
+        self.contador_animacion += 1
+        if self.contador_animacion >= 5:
+            self.frame_actual = (self.frame_actual + 1) % 6
+            self.contador_animacion = 0
 
     def reiniciar(self):
         self.posicion = 30
-
+        self.frame_actual = 0
 
     def obtener_datos(self):
         return [f' Nombre: {self.nombre_genero[0]}',
@@ -55,3 +70,4 @@ class Caballo:
                f' Altura: {self.altura} mts',
                f' Velocidad: {self.cuotas_saltos_velocidad[2]} Km/h',
                f' Cuota: {self.cuotas_saltos_velocidad[0]}']
+        

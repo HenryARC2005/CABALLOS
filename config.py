@@ -16,7 +16,6 @@ pygame.display.set_caption('Carrera de Caballos')
 fondo_carrera = pygame.image.load("sprites/background.png").convert()
 fondo_carrera = pygame.transform.scale_by(fondo_carrera, (2))
 caballo_sprite = pygame.image.load("sprites/player.png").convert_alpha()
-caballo_sprite = pygame.transform.scale_by(caballo_sprite, (2))
 
 
 # Colores

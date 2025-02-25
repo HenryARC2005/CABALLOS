@@ -18,16 +18,27 @@ def altura():
     return round(uniform(1.45, 1.80), 2)
 
 
-def cuota_saltos_velocidad():
+def cuota_saltos_velocidad(modalidad):
     velocidad = randint(30, 71)
 
-    if velocidad <= 40:
-        cuota, saltos = round(uniform(2, 3), 2), range(2, 4)
-    elif velocidad <= 55:
-        cuota, saltos = round(uniform(1, 3), 2), range(1, 5)
-    elif velocidad <= 66:
-        cuota, saltos = round(uniform(1.20, 1.90), 2), range(1, 5)
+    if any([modalidad == 2, modalidad == 4]):
+        if velocidad <= 40:
+            cuota, saltos = round(uniform(2, 3), 2), range(2, 4)
+        elif velocidad <= 55:
+            cuota, saltos = round(uniform(1, 3), 2), range(1, 5)
+        elif velocidad <= 66:
+            cuota, saltos = round(uniform(1.20, 1.90), 2), range(1, 5)
+        else:
+            cuota, saltos = round(uniform(1.05, 1.40), 2), range(1, 6)
+
     else:
-        cuota, saltos = round(uniform(1.05, 1.40), 2), range(1, 6)
+        if velocidad <= 40:
+            cuota, saltos = round(uniform(2, 8), 2), range(2, 4)
+        elif velocidad <= 55:
+            cuota, saltos = round(uniform(1, 5), 2), range(1, 5)
+        elif velocidad <= 66:
+            cuota, saltos = round(uniform(1.20, 3), 2), range(1, 5)
+        else:
+            cuota, saltos = round(uniform(1.05, 1.40), 2), range(1, 6)
 
     return cuota, saltos, velocidad
